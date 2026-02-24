@@ -1,0 +1,7 @@
+com\miapp\contactos\dto\VueloDTO.class
+com\miapp\contactos\web\JAXRSConfig.class
+com\miapp\contactos\dao\VueloDAO.class
+com\miapp\contactos\web\VueloResource.class
+com\miapp\contactos\dao\VueloDAOImpl.class
+com\miapp\contactos\model\Vuelo.class
+com\miapp\contactos\service\VueloService.class
