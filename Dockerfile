@@ -8,6 +8,7 @@ RUN mvn clean package -DskipTests
 # Etapa 2: desplegar en Payara
 FROM payara/server-full:6.2024.6
 
-# Copiar el WAR al directorio de autodeploy
 COPY --from=build /app/target/*.war /opt/payara/deployments/
+
+ENV PORT=8080
 EXPOSE 8080
