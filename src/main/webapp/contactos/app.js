@@ -1,4 +1,4 @@
-const API_URL = window.location.origin + '/api/vuelos';
+const API_URL = window.location.origin + '/contactos-crud-jakartaee/api/vuelos';
 
 document.addEventListener('DOMContentLoaded', () => {
     const tablaVuelos = document.getElementById('tabla-vuelos');
