@@ -5,8 +5,8 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Etapa 2: desplegar en Payara
-FROM payara/server-full:6.2024.6
+# Etapa 2: desplegar en Payara con Java 21
+FROM payara/server-full:6.2024.6-jdk21
 
 COPY --from=build /app/target/*.war /opt/payara/deployments/
 
