@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             version="3.0"
-             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
-                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
-    <persistence-unit name="vuelosPU" transaction-type="JTA">
-        <jta-data-source>jdbc/vuelosDS</jta-data-source>
-
-        <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
-        </properties>
-    </persistence-unit>
-</persistence>
+<persistence-unit name="vuelosPU" transaction-type="JTA">
+    <jta-data-source>java:app/jdbc/vuelosDS</jta-data-source>
+    <properties>
+        <property name="jakarta.persistence.jdbc.url"
+                  value="${ENV=DB_URL}"/>
+        <property name="jakarta.persistence.jdbc.user"
+                  value="${ENV=DB_USER}"/>
+        <property name="jakarta.persistence.jdbc.password"
+                  value="${ENV=DB_PASSWORD}"/>
+        <property name="jakarta.persistence.schema-generation.database.action"
+                  value="create-or-extend-tables"/>
+    </properties>
+</persistence-unit>
