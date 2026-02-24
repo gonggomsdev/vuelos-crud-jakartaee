@@ -15,7 +15,7 @@ exec java -Xms64m -Xmx320m -XX:MaxMetaspaceSize=160m \
   -jar /opt/payara/payara-micro.jar \
   --noCluster \
   --port 8080 \
-  --interface 0.0.0.0 \
+  --hostName 0.0.0.0 \
   --addlibs /opt/payara/libs/postgresql.jar \
   --postbootcommandfile /opt/payara/config/post-boot-generated.asadmin \
   --deploy /opt/payara/deployments/ROOT.war \
