@@ -2,16 +2,11 @@
 set -eu
 
 cat > /opt/payara/config/post-boot-generated.asadmin <<EOF
-create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGSimpleDataSource --restype=javax.sql.DataSource PostgresPool
-set resources.jdbc-connection-pool.PostgresPool.property.user=${DB_USER}
-set resources.jdbc-connection-pool.PostgresPool.property.password=${DB_PASSWORD}
-set resources.jdbc-connection-pool.PostgresPool.property.serverName=${DB_HOST}
-set resources.jdbc-connection-pool.PostgresPool.property.portNumber=${DB_PORT}
-set resources.jdbc-connection-pool.PostgresPool.property.databaseName=${DB_NAME}
+create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGSimpleDataSource --restype=javax.sql.DataSource --property user=${DB_USER}:password=${DB_PASSWORD}:serverName=${DB_HOST}:portNumber=${DB_PORT}:databaseName=${DB_NAME}:sslmode=${DB_SSL_MODE} PostgresPool
 create-jdbc-resource --connectionpoolid=PostgresPool java:app/jdbc/vuelosDS
 EOF
 
-exec java -Xms64m -Xmx320m -XX:MaxMetaspaceSize=160m \
+exec java \
   -jar /opt/payara/payara-micro.jar \
   --noCluster \
   --port 8080 \
